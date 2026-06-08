@@ -1,7 +1,11 @@
 import { C } from "@/lib/constants";
 
-const FONT_HANKEN = "var(--font-hanken), sans-serif";
-const FONT_GARAMOND = "var(--font-garamond), Georgia, serif";
+const F_H = "var(--font-hanken), sans-serif";
+const F_G = "var(--font-garamond), Georgia, serif";
+
+const cream20 = "rgba(247,246,235,0.20)";
+const cream70 = "rgba(247,246,235,0.70)";
+const cream40 = "rgba(247,246,235,0.40)";
 
 const valores = [
   {
@@ -35,43 +39,48 @@ export default function PorQueFlora() {
   return (
     <section
       id="por-que-flora"
-      style={{ background: C.white, padding: "120px 24px" }}
+      style={{ background: C.dark, padding: "96px 24px" }}
+      className="px-6 md:px-20"
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+
+        {/* Headline — grande, itálico, cream */}
         <h2
           className="reveal"
           style={{
-            fontFamily: FONT_GARAMOND,
+            fontFamily: F_G,
             fontWeight: 400,
-            fontSize: "clamp(32px, 4vw, 48px)",
+            fontSize: "clamp(40px, 5.5vw, 72px)",
             fontStyle: "italic",
-            color: C.dark,
+            color: C.cream,
             marginBottom: "64px",
-            maxWidth: "600px",
+            lineHeight: 1.05,
+            maxWidth: "700px",
           }}
         >
           Sabés lo que fumás.
         </h2>
 
+        {/* Valores — grid 2 columnas, separadores horizontales */}
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "0" }}>
           {valores.map((v, i) => (
             <div
               key={v.titulo}
               className={`reveal reveal-d${Math.min(i + 1, 5)}`}
               style={{
-                borderTop: `1px solid ${C.dark10}`,
+                borderTop: `1px solid ${cream20}`,
                 padding: "28px 0",
                 paddingRight: i % 2 === 0 ? "48px" : "0",
               }}
             >
               <h3
                 style={{
-                  fontFamily: FONT_HANKEN,
-                  fontSize: "13px",
+                  fontFamily: F_H,
+                  fontSize: "12px",
                   fontWeight: 700,
-                  letterSpacing: "0.1em",
+                  letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: C.dark,
+                  color: C.green,
                   marginBottom: "10px",
                 }}
               >
@@ -79,10 +88,10 @@ export default function PorQueFlora() {
               </h3>
               <p
                 style={{
-                  fontFamily: FONT_HANKEN,
+                  fontFamily: F_H,
                   fontSize: "14px",
-                  lineHeight: 1.7,
-                  color: C.dark70,
+                  lineHeight: 1.75,
+                  color: cream70,
                 }}
               >
                 {v.descripcion}
@@ -90,6 +99,37 @@ export default function PorQueFlora() {
             </div>
           ))}
         </div>
+
+        {/* CTA final de sección */}
+        <div
+          className="reveal reveal-d5"
+          style={{
+            borderTop: `1px solid ${cream20}`,
+            paddingTop: "40px",
+            marginTop: "8px",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: F_H,
+              fontSize: "14px",
+              color: cream40,
+            }}
+          >
+            ¿Querés saber más sobre cómo funciona?{" "}
+            <a
+              href="#como-funciona"
+              style={{
+                color: C.green,
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
+            >
+              Ver los tres pasos
+            </a>
+          </p>
+        </div>
+
       </div>
     </section>
   );

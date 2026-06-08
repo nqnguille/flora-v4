@@ -28,9 +28,10 @@ export default function ComoFunciona() {
   return (
     <section
       id="como-funciona"
-      style={{ background: C.cream, padding: "120px 24px" }}
+      style={{ background: C.cream, padding: "96px 24px" }}
+      className="px-6 md:px-20"
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0" }}>
         <h2
           className="reveal"
           style={{
@@ -38,7 +39,7 @@ export default function ComoFunciona() {
             fontWeight: 400,
             fontSize: "clamp(32px, 4vw, 48px)",
             color: C.dark,
-            marginBottom: "80px",
+            marginBottom: "56px",
           }}
         >
           Tres pasos.

@@ -5,13 +5,6 @@
   --foreground: #2D4239;
 }
 
-body {
-  background: #F7F6EB;
-  color: #2D4239;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,24 +15,46 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Reveal animation for scroll sections */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+body {
+  background: #F7F6EB;
+  color: #2D4239;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.reveal {
-  animation: fadeUp 0.6s ease-out both;
+/* Grain texture — hace que el cream no parezca digital plano */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 192px 192px;
 }
 
-.reveal-d1 { animation-delay: 0.1s; }
-.reveal-d2 { animation-delay: 0.2s; }
-.reveal-d3 { animation-delay: 0.3s; }
-.reveal-d4 { animation-delay: 0.4s; }
-.reveal-d5 { animation-delay: 0.5s; }
+/* Scroll reveal — visible por defecto (SSR/SEO/no-JS)
+   JS agrega .animate-ready a los elementos bajo el fold para animarlos */
+.reveal { /* sin ocultar por defecto */ }
+
+.reveal.animate-ready {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.animate-ready.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.40s; }

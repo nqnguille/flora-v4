@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, EB_Garamond } from "next/font/google";
 import "./globals.css";
+import RevealObserver from "@/components/RevealObserver";
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
@@ -84,7 +85,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <RevealObserver />
+        {children}
+      </body>
     </html>
   );
 }
