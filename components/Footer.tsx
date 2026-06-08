@@ -23,10 +23,9 @@ const legalLinks = [
 export default function Footer() {
   return (
     <footer style={{ background: C.dark }}>
-      {/* Franja superior */}
       <div
         style={{
-          borderBottom: `1px solid rgba(45,66,57,0.4)`,
+          borderBottom: "1px solid rgba(45,66,57,0.4)",
           padding: "64px 24px",
         }}
       >
@@ -79,13 +78,11 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Grid 4 columnas */}
       <div style={{ padding: "64px 24px 40px" }}>
         <div
           style={{ maxWidth: "1200px", margin: "0 auto" }}
           className="grid grid-cols-2 md:grid-cols-4 gap-10"
         >
-          {/* Brand */}
           <div>
             <p
               style={{
@@ -115,7 +112,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navegación */}
           <div>
             <p
               style={{
@@ -143,9 +139,7 @@ export default function Footer() {
                       transition: "color 0.15s",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "rgba(247,246,235,0.65)")
-                    }
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(247,246,235,0.65)")}
                   >
                     {l.label}
                   </a>
@@ -154,7 +148,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contacto */}
           <div>
             <p
               style={{
@@ -170,68 +163,33 @@ export default function Footer() {
               Contacto
             </p>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
-              <li>
-                <a
-                  href={waUrl("general")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontFamily: FONT_HANKEN,
-                    fontSize: "14px",
-                    color: "rgba(247,246,235,0.65)",
-                    textDecoration: "none",
-                    transition: "color 0.15s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(247,246,235,0.65)")
-                  }
-                >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/flora.ong"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    fontFamily: FONT_HANKEN,
-                    fontSize: "14px",
-                    color: "rgba(247,246,235,0.65)",
-                    textDecoration: "none",
-                    transition: "color 0.15s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(247,246,235,0.65)")
-                  }
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:hola@floraong.org"
-                  style={{
-                    fontFamily: FONT_HANKEN,
-                    fontSize: "14px",
-                    color: "rgba(247,246,235,0.65)",
-                    textDecoration: "none",
-                    transition: "color 0.15s",
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "rgba(247,246,235,0.65)")
-                  }
-                >
-                  hola@floraong.org
-                </a>
-              </li>
+              {[
+                { label: "WhatsApp", href: waUrl("general"), external: true },
+                { label: "Instagram", href: "https://instagram.com/flora.ong", external: true },
+                { label: "hola@floraong.org", href: "mailto:hola@floraong.org", external: false },
+              ].map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    target={l.external ? "_blank" : undefined}
+                    rel={l.external ? "noopener noreferrer" : undefined}
+                    style={{
+                      fontFamily: FONT_HANKEN,
+                      fontSize: "14px",
+                      color: "rgba(247,246,235,0.65)",
+                      textDecoration: "none",
+                      transition: "color 0.15s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(247,246,235,0.65)")}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <p
               style={{
@@ -259,9 +217,7 @@ export default function Footer() {
                       transition: "color 0.15s",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = C.cream)}
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "rgba(247,246,235,0.65)")
-                    }
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(247,246,235,0.65)")}
                   >
                     {l.label}
                   </a>
@@ -271,13 +227,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
             marginTop: "48px",
-            borderTop: `1px solid rgba(45,66,57,0.3)`,
+            borderTop: "1px solid rgba(45,66,57,0.3)",
             paddingTop: "24px",
           }}
         >

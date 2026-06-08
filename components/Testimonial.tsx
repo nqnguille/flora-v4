@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { C } from "@/lib/constants";
 
 const FONT_HANKEN = "var(--font-hanken), sans-serif";
@@ -14,18 +11,14 @@ export default function Testimonial() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="flex flex-col md:flex-row" style={{ gap: "64px" }}>
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-full md:w-1/2"
+          <div
+            className="reveal w-full"
             style={{
               borderRadius: "8px",
               overflow: "hidden",
               aspectRatio: "4/3",
               flexShrink: 0,
+              maxWidth: "560px",
             }}
           >
             <img
@@ -33,14 +26,10 @@ export default function Testimonial() {
               alt="Cultivo de cannabis medicinal en invernadero"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
-          </motion.div>
+          </div>
 
-          {/* Quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15, duration: 0.6 }}
+          <div
+            className="reveal reveal-d2"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -75,7 +64,7 @@ export default function Testimonial() {
             >
               María, asociada desde 2024, Neuquén
             </cite>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { C } from "@/lib/constants";
 
 const FONT_HANKEN = "var(--font-hanken), sans-serif";
@@ -34,11 +31,8 @@ export default function ComoFunciona() {
       style={{ background: C.cream, padding: "120px 24px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
+          className="reveal"
           style={{
             fontFamily: FONT_GARAMOND,
             fontWeight: 400,
@@ -48,19 +42,13 @@ export default function ComoFunciona() {
           }}
         >
           Tres pasos.
-        </motion.h2>
+        </h2>
 
-        <div
-          className="flex flex-col md:flex-row"
-          style={{ gap: "0" }}
-        >
+        <div className="flex flex-col md:flex-row" style={{ gap: "0" }}>
           {pasos.map((paso, i) => (
-            <motion.div
+            <div
               key={paso.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
+              className={`reveal reveal-d${i + 1}`}
               style={{
                 flex: 1,
                 position: "relative",
@@ -68,7 +56,6 @@ export default function ComoFunciona() {
                 paddingBottom: "40px",
               }}
             >
-              {/* Línea conectora horizontal (desktop) */}
               {i < pasos.length - 1 && (
                 <div
                   className="hidden md:block"
@@ -83,7 +70,6 @@ export default function ComoFunciona() {
                 />
               )}
 
-              {/* Número decorativo */}
               <span
                 style={{
                   display: "block",
@@ -99,7 +85,6 @@ export default function ComoFunciona() {
                 {paso.num}
               </span>
 
-              {/* Título */}
               <h3
                 style={{
                   fontFamily: FONT_HANKEN,
@@ -113,7 +98,6 @@ export default function ComoFunciona() {
                 {paso.titulo}
               </h3>
 
-              {/* Descripción */}
               <p
                 style={{
                   fontFamily: FONT_HANKEN,
@@ -125,7 +109,7 @@ export default function ComoFunciona() {
               >
                 {paso.descripcion}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

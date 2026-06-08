@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { C } from "@/lib/constants";
 
 const FONT_HANKEN = "var(--font-hanken), sans-serif";
@@ -41,11 +38,8 @@ export default function PorQueFlora() {
       style={{ background: C.white, padding: "120px 24px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
+          className="reveal"
           style={{
             fontFamily: FONT_GARAMOND,
             fontWeight: 400,
@@ -57,16 +51,13 @@ export default function PorQueFlora() {
           }}
         >
           Sabés lo que fumás.
-        </motion.h2>
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "0" }}>
           {valores.map((v, i) => (
-            <motion.div
+            <div
               key={v.titulo}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`reveal reveal-d${Math.min(i + 1, 5)}`}
               style={{
                 borderTop: `1px solid ${C.dark10}`,
                 padding: "28px 0",
@@ -96,7 +87,7 @@ export default function PorQueFlora() {
               >
                 {v.descripcion}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

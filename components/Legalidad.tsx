@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { C, waUrl } from "@/lib/constants";
 
 const FONT_HANKEN = "var(--font-hanken), sans-serif";
@@ -20,11 +17,8 @@ export default function Legalidad() {
       style={{ background: C.cream, padding: "120px 24px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
+          className="reveal"
           style={{
             fontFamily: FONT_GARAMOND,
             fontWeight: 400,
@@ -35,19 +29,16 @@ export default function Legalidad() {
           }}
         >
           Operamos dentro del marco legal.
-        </motion.h2>
+        </h2>
 
         <div
           className="grid grid-cols-1 md:grid-cols-2"
           style={{ gap: "0", marginBottom: "64px" }}
         >
           {afirmaciones.map((af, i) => (
-            <motion.div
+            <div
               key={af}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`reveal reveal-d${i + 1}`}
               style={{
                 display: "flex",
                 alignItems: "flex-start",
@@ -81,15 +72,12 @@ export default function Legalidad() {
               >
                 {af}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+        <p
+          className="reveal reveal-d5"
           style={{
             fontFamily: FONT_HANKEN,
             fontSize: "15px",
@@ -112,7 +100,7 @@ export default function Legalidad() {
           >
             Escribinos por WhatsApp.
           </a>
-        </motion.p>
+        </p>
       </div>
     </section>
   );

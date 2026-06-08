@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { C } from "@/lib/constants";
 
 const FONT_HANKEN = "var(--font-hanken), sans-serif";
@@ -35,11 +32,8 @@ export default function Educacion() {
       style={{ background: C.white, padding: "120px 24px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+        <p
+          className="reveal"
           style={{
             fontFamily: FONT_HANKEN,
             fontSize: "12px",
@@ -51,13 +45,10 @@ export default function Educacion() {
           }}
         >
           De nuestra guía
-        </motion.p>
+        </p>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.5 }}
+        <h2
+          className="reveal reveal-d1"
           style={{
             fontFamily: FONT_GARAMOND,
             fontWeight: 400,
@@ -68,19 +59,15 @@ export default function Educacion() {
           }}
         >
           Lo que querés saber antes de empezar.
-        </motion.h2>
+        </h2>
 
         <div className="flex flex-col md:flex-row" style={{ gap: "32px" }}>
-          {/* Artículo grande */}
           {articulos
             .filter((a) => a.grande)
-            .map((a, i) => (
-              <motion.article
+            .map((a) => (
+              <article
                 key={a.titulo}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="reveal reveal-d2"
                 style={{ flex: "0 0 58%", cursor: "pointer" }}
               >
                 <div
@@ -121,20 +108,16 @@ export default function Educacion() {
                 >
                   {a.titulo}
                 </h3>
-              </motion.article>
+              </article>
             ))}
 
-          {/* Artículos pequeños */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "32px" }}>
             {articulos
               .filter((a) => !a.grande)
               .map((a, i) => (
-                <motion.article
+                <article
                   key={a.titulo}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 + i * 0.1, duration: 0.5 }}
+                  className={`reveal reveal-d${i + 3}`}
                   style={{
                     borderTop: `1px solid ${C.dark10}`,
                     paddingTop: "24px",
@@ -165,7 +148,7 @@ export default function Educacion() {
                   >
                     {a.titulo}
                   </h3>
-                </motion.article>
+                </article>
               ))}
           </div>
         </div>

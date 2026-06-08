@@ -53,11 +53,8 @@ export default function Membresias() {
       style={{ background: C.dark, padding: "120px 24px" }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <h2
+          className="reveal"
           style={{
             fontFamily: FONT_GARAMOND,
             fontWeight: 400,
@@ -67,19 +64,16 @@ export default function Membresias() {
           }}
         >
           Elegí cómo acceder.
-        </motion.h2>
+        </h2>
 
         <div
           className="flex flex-col md:flex-row items-end"
           style={{ gap: "16px" }}
         >
           {planes.map((plan, i) => (
-            <motion.div
+            <div
               key={plan.nombre}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
+              className={`reveal reveal-d${i + 1}`}
               style={{
                 flex: 1,
                 background: C.cream,
@@ -89,7 +83,6 @@ export default function Membresias() {
                 transform: plan.destacado ? "translateY(-8px)" : "none",
               }}
             >
-              {/* Badge */}
               {plan.badge && (
                 <span
                   style={{
@@ -116,7 +109,6 @@ export default function Membresias() {
                 </span>
               )}
 
-              {/* Nombre */}
               <h3
                 style={{
                   fontFamily: FONT_GARAMOND,
@@ -129,7 +121,6 @@ export default function Membresias() {
                 {plan.nombre}
               </h3>
 
-              {/* Gramos */}
               <p
                 style={{
                   fontFamily: FONT_HANKEN,
@@ -144,7 +135,6 @@ export default function Membresias() {
                 {plan.gramos}
               </p>
 
-              {/* Descripción */}
               <p
                 style={{
                   fontFamily: FONT_HANKEN,
@@ -157,7 +147,6 @@ export default function Membresias() {
                 {plan.descripcion}
               </p>
 
-              {/* Features */}
               <div
                 style={{
                   borderTop: `1px solid ${C.dark10}`,
@@ -199,7 +188,6 @@ export default function Membresias() {
                 ))}
               </div>
 
-              {/* CTA */}
               <motion.a
                 href={waUrl(plan.waKey)}
                 target="_blank"
@@ -218,13 +206,13 @@ export default function Membresias() {
                   fontFamily: FONT_HANKEN,
                   fontWeight: 600,
                   fontSize: "14px",
-                  color: plan.destacado ? C.dark : C.dark,
+                  color: C.dark,
                   textDecoration: "none",
                 }}
               >
                 Consultar por WhatsApp
               </motion.a>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
